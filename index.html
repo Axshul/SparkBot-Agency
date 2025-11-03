@@ -1,11 +1,1068 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Under DevOps</title>
-</head>
-<body>
-    <marquee><h1>Under Construction Pre-Prod</h1></marquee>
-</body>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SparkBot - AI Automation Agency | Save 20+ Hours Weekly</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://unpkg.com/@n8n/chat/dist/umd/chat.bundle.js"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: radial-gradient(ellipse at top, #0a0a0a 0%, #000000 100%);
+      color: #ffffff;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      color: #6366f1;
+    }
+
+    .brand-name {
+      font-size: 20px;
+      font-weight: 800;
+      color: #ffffff;
+      background: linear-gradient(135deg, #ffffff 0%, #6366f1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-link {
+      color: #a0a0a0;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      font-size: 14px;
+    }
+
+    .nav-link:hover {
+      color: #6366f1;
+    }
+
+    .cta-button-small {
+      padding: 8px 20px;
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .cta-button-small:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 24px 80px;
+      background: linear-gradient(135deg, #000000 0%, #1a1a2e 30%, #0a0a0a 70%, #000000 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -30%;
+      width: 80%;
+      height: 120%;
+      background: radial-gradient(ellipse, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+      animation: pulse 8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.5; }
+      50% { transform: scale(1.1) rotate(2deg); opacity: 0.8; }
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    .hero-text {
+      max-width: 600px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 8px 20px;
+      background: rgba(99, 102, 241, 0.1);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      border-radius: 50px;
+      font-size: 14px;
+      color: #818cf8;
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 24px;
+      background: linear-gradient(135deg, #ffffff 0%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 20px;
+      line-height: 1.6;
+      color: #a0a0a0;
+      margin-bottom: 32px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 16px 32px;
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 18px;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+      border: none;
+      cursor: pointer;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+    }
+
+    /* ROI Calculator */
+    .roi-calculator {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      padding: 32px;
+      border-radius: 16px;
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .calculator-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: #ffffff;
+      text-align: center;
+    }
+
+    .calculator-input {
+      margin-bottom: 20px;
+    }
+
+    .calculator-input label {
+      display: block;
+      font-size: 14px;
+      color: #a0a0a0;
+      margin-bottom: 8px;
+    }
+
+    .slider-container {
+      position: relative;
+    }
+
+    .slider {
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: #2a2a3e;
+      outline: none;
+      -webkit-appearance: none;
+    }
+
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+    }
+
+    .slider::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+    }
+
+    .slider-value {
+      font-size: 16px;
+      font-weight: 600;
+      color: #6366f1;
+      text-align: right;
+    }
+
+    .roi-result {
+      background: rgba(99, 102, 241, 0.1);
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      margin-top: 20px;
+      border: 1px solid rgba(99, 102, 241, 0.3);
+    }
+
+    .roi-amount {
+      font-size: 32px;
+      font-weight: 800;
+      color: #6366f1;
+      margin-bottom: 8px;
+    }
+
+    .roi-label {
+      font-size: 14px;
+      color: #a0a0a0;
+    }
+
+    /* Workflow Section */
+    .workflow-section {
+      padding: 100px 24px;
+      background: #0a0a0a;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 42px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 18px;
+      color: #a0a0a0;
+      margin-bottom: 60px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .workflow-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: #1a1a2e;
+      border-radius: 16px;
+      padding: 40px;
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Workflow Visual Styles */
+    .workflow-visual {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .workflow-step {
+      flex: 1;
+      min-width: 180px;
+      text-align: center;
+      padding: 24px 16px;
+      background: rgba(99, 102, 241, 0.05);
+      border-radius: 12px;
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .workflow-step:hover {
+      transform: translateY(-4px);
+      border-color: rgba(99, 102, 241, 0.4);
+      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+    }
+
+    .step-icon {
+      margin-bottom: 16px;
+      color: #6366f1;
+    }
+
+    .workflow-step h4 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #ffffff;
+    }
+
+    .workflow-step p {
+      font-size: 14px;
+      color: #a0a0a0;
+      line-height: 1.4;
+    }
+
+    .workflow-arrow {
+      font-size: 24px;
+      color: #6366f1;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    /* Why Us Section */
+    .why-us {
+      padding: 100px 24px;
+      background: linear-gradient(180deg, #0a0a0a 0%, #1a1a2e 100%);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      padding: 40px;
+      border-radius: 16px;
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(99, 102, 241, 0.5);
+      box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+    }
+
+    .feature-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+      font-size: 24px;
+      margin-bottom: 16px;
+      color: #ffffff;
+    }
+
+    .feature-card p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #a0a0a0;
+    }
+
+    /* Pricing Section */
+    .pricing {
+      padding: 100px 24px;
+      background: #0f0f0f;
+    }
+
+    .pricing-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .pricing-range {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      margin: 40px 0;
+      flex-wrap: wrap;
+    }
+
+    .price-point {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      padding: 24px 32px;
+      border-radius: 12px;
+      border: 1px solid rgba(99, 102, 241, 0.2);
+    }
+
+    .price-amount {
+      font-size: 32px;
+      font-weight: 800;
+      color: #6366f1;
+    }
+
+    .price-label {
+      font-size: 14px;
+      color: #a0a0a0;
+      margin-top: 4px;
+    }
+
+    /* GitHub Section */
+    .github-section {
+      padding: 80px 24px;
+      background: #0a0a0a;
+    }
+
+    .github-card {
+      max-width: 600px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      padding: 32px;
+      border-radius: 16px;
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      text-align: center;
+    }
+
+    .github-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .github-icon {
+      width: 32px;
+      height: 32px;
+      fill: #6366f1;
+    }
+
+    .github-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .github-stats {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin: 20px 0;
+    }
+
+    .github-stat {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 20px;
+      font-weight: 700;
+      color: #6366f1;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: #a0a0a0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .github-link {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      background: rgba(99, 102, 241, 0.1);
+      color: #6366f1;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(99, 102, 241, 0.3);
+    }
+
+    .github-link:hover {
+      background: rgba(99, 102, 241, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 100px 24px;
+      background: linear-gradient(135deg, #1a1a2e 0%, #0f0f0f 100%);
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      font-size: 42px;
+      font-weight: 800;
+      margin-bottom: 24px;
+      color: #ffffff;
+    }
+
+    .cta-section p {
+      font-size: 20px;
+      color: #a0a0a0;
+      margin-bottom: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 60px 24px 40px;
+      background: #0a0a0a;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+
+    .footer-link {
+      color: #a0a0a0;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s ease;
+    }
+
+    .footer-link:hover {
+      color: #6366f1;
+    }
+
+    .footer-bottom {
+      padding-top: 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      color: #808080;
+      font-size: 14px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      .section-title {
+        font-size: 32px;
+      }
+
+      .cta-section h2 {
+        font-size: 32px;
+      }
+
+      .pricing-range {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .github-stats {
+        gap: 20px;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .workflow-visual {
+        flex-direction: column;
+      }
+
+      .workflow-arrow {
+        transform: rotate(90deg);
+      }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body><!-- Header -->
+  <header class="header">
+   <nav class="nav">
+    <div class="nav-brand">
+     <svg class="logo-icon" width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+     </svg><span class="brand-name">SparkBot Agency</span>
+    </div>
+    <div class="nav-links"><a href="#services" class="nav-link">Services</a> <a href="#workflow" class="nav-link">How It Works</a> <a href="#pricing" class="nav-link">Pricing</a> <a href="https://github.com/Axshul/SparkBot-Agency" class="nav-link" target="_blank" rel="noopener noreferrer">GitHub</a> <a href="https://calendly.com/anshul2006n/book-a-discovery-call" class="cta-button-small" target="_blank" rel="noopener noreferrer">Book Call</a>
+    </div>
+   </nav>
+  </header><!-- Hero Section -->
+  <section class="hero">
+   <div class="hero-content">
+    <div class="hero-text">
+     <div class="hero-badge">
+      ⚡ Transparent AI Automation
+     </div>
+     <h1 id="hero-title">Save 20+ Hours Weekly with AI Automation</h1>
+     <p id="hero-subtitle">We help startups and agencies automate their lead generation using N8N and AI — transparent, fast, and scalable solutions from $500 to $100k.</p><a href="https://calendly.com/anshul2006n/book-a-discovery-call" class="cta-button" id="cta-primary" target="_blank" rel="noopener noreferrer">Book Your Discovery Call →</a>
+    </div>
+    <div class="roi-calculator">
+     <h3 class="calculator-title">
+      <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline-block; margin-right: 8px; color: #6366f1;"><line x1="12" y1="1" x2="12" y2="23" /> <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+      </svg> Calculate Your ROI</h3>
+     <div class="calculator-input"><label for="hours">Hours spent on repetitive tasks weekly:</label>
+      <div class="slider-container"><input type="range" id="hours" class="slider" min="5" max="40" value="20">
+       <div class="slider-value" id="hours-value">
+        20 hours
+       </div>
+      </div>
+     </div>
+     <div class="calculator-input"><label for="rate">Your hourly rate ($):</label>
+      <div class="slider-container"><input type="range" id="rate" class="slider" min="25" max="200" value="75">
+       <div class="slider-value" id="rate-value">
+        $75/hour
+       </div>
+      </div>
+     </div>
+     <div class="roi-result">
+      <div class="roi-amount" id="annual-savings">
+       $78,000
+      </div>
+      <div class="roi-label">
+       Annual time savings value
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Workflow Section -->
+  <section class="workflow-section" id="workflow">
+   <div class="container">
+    <h2 class="section-title" id="workflow-title">See Automation in Action</h2>
+    <p class="section-subtitle">Real N8N workflow powering lead generation for agencies like yours</p>
+    <div class="workflow-container">
+     <div class="workflow-visual">
+      <div class="workflow-step">
+       <div class="step-icon">
+        <svg width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /> <polyline points="3.27,6.96 12,12.01 20.73,6.96" /> <line x1="12" y1="22.08" x2="12" y2="12" />
+        </svg>
+       </div>
+       <h4>Lead Capture</h4>
+       <p>Website forms, LinkedIn, cold outreach</p>
+      </div>
+      <div class="workflow-arrow">
+       →
+      </div>
+      <div class="workflow-step">
+       <div class="step-icon">
+        <svg width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4" /> <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3" /> <path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3" /> <path d="M13 12h3a2 2 0 0 1 2 2v1" /> <path d="M11 12H8a2 2 0 0 0-2 2v1" />
+        </svg>
+       </div>
+       <h4>AI Scoring</h4>
+       <p>Intelligent lead qualification &amp; prioritization</p>
+      </div>
+      <div class="workflow-arrow">
+       →
+      </div>
+      <div class="workflow-step">
+       <div class="step-icon">
+        <svg width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /> <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
+        </svg>
+       </div>
+       <h4>CRM Integration</h4>
+       <p>Automatic contact creation &amp; updates</p>
+      </div>
+      <div class="workflow-arrow">
+       →
+      </div>
+      <div class="workflow-step">
+       <div class="step-icon">
+        <svg width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /> <polyline points="22,6 12,13 2,6" />
+        </svg>
+       </div>
+       <h4>Email Sequences</h4>
+       <p>Personalized nurture campaigns</p>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Why Us Section -->
+  <section class="why-us" id="services">
+   <div class="container">
+    <h2 class="section-title" id="why-us-title">Why Choose SparkBot?</h2>
+    <div class="features-grid">
+     <div class="feature-card">
+      <div class="feature-icon">
+       <svg width="48" height="48" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8" /> <path d="m21 21-4.35-4.35" />
+       </svg>
+      </div>
+      <h3>Transparent Process</h3>
+      <p>Unlike black-box agencies, we document everything openly. See our work, methodologies, and code on GitHub.</p>
+     </div>
+     <div class="feature-card">
+      <div class="feature-icon">
+       <svg width="48" height="48" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+       </svg>
+      </div>
+      <h3>Lightning Fast Setup</h3>
+      <p>Our N8N expertise means faster integrations. What takes others weeks, we deliver in days.</p>
+     </div>
+     <div class="feature-card">
+      <div class="feature-icon">
+       <svg width="48" height="48" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" /> <circle cx="12" cy="12" r="6" /> <circle cx="12" cy="12" r="2" />
+       </svg>
+      </div>
+      <h3>Custom Solutions</h3>
+      <p>Every business is unique. We build tailored automations that fit your exact workflow and requirements.</p>
+     </div>
+    </div>
+   </div>
+  </section><!-- Pricing Section -->
+  <section class="pricing" id="pricing">
+   <div class="container">
+    <h2 class="section-title" id="pricing-title">Flexible Solutions for Every Business</h2>
+    <p class="section-subtitle">From simple automations to enterprise-grade systems</p>
+    <div class="pricing-content">
+     <div class="pricing-range">
+      <div class="price-point">
+       <div class="price-amount">
+        $500
+       </div>
+       <div class="price-label">
+        Simple Automations
+       </div>
+      </div>
+      <div style="color: #6366f1; font-size: 24px; font-weight: 600;">
+       to
+      </div>
+      <div class="price-point">
+       <div class="price-amount">
+        $500k
+       </div>
+       <div class="price-label">
+        Enterprise Systems
+       </div>
+      </div>
+     </div>
+     <p style="color: #a0a0a0; margin-top: 20px;">Every project is custom-scoped based on complexity and requirements</p>
+    </div>
+   </div>
+  </section><!-- GitHub Section -->
+  <section class="github-section">
+   <div class="container">
+    <div class="github-card">
+     <div class="github-header">
+      <svg class="github-icon" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+      </svg>
+      <h3 class="github-title">Open Source Approach</h3>
+     </div>
+     <p style="color: #a0a0a0; margin-bottom: 20px;">See our transparent development process and automation tools</p>
+     <div class="github-stats">
+      <div class="github-stat">
+       <div class="stat-number">
+        JavaScript
+       </div>
+       <div class="stat-label">
+        Primary Language
+       </div>
+      </div>
+      <div class="github-stat">
+       <div class="stat-number">
+        Active
+       </div>
+       <div class="stat-label">
+        Development
+       </div>
+      </div>
+      <div class="github-stat">
+       <div class="stat-number">
+        MIT
+       </div>
+       <div class="stat-label">
+        License
+       </div>
+      </div>
+     </div><a href="https://github.com/Axshul/SparkBot-Agency" class="github-link" target="_blank" rel="noopener noreferrer">View Repository →</a>
+    </div>
+   </div>
+  </section><!-- Final CTA Section -->
+  <section class="cta-section">
+   <div class="container">
+    <h2>Ready to Automate Your Growth?</h2>
+    <p>Book a free 15-minute discovery call and see how much time and money you could be saving with custom AI automation.</p><a href="https://calendly.com/anshul2006n/book-a-discovery-call" class="cta-button" target="_blank" rel="noopener noreferrer">Schedule Your Discovery Call →</a>
+   </div>
+  </section><!-- Footer -->
+  <footer class="footer">
+   <div class="footer-content">
+    <div class="footer-links"><a href="https://github.com/Axshul/SparkBot-Agency" class="footer-link" target="_blank" rel="noopener noreferrer">GitHub</a> <a href="https://calendly.com/anshul2006n/book-a-discovery-call" class="footer-link" target="_blank" rel="noopener noreferrer">Book a Call</a> <a href="#" class="footer-link">Case Studies</a> <a href="#" class="footer-link">Documentation</a>
+    </div>
+    <div class="footer-bottom">
+     <p id="footer-text">Built with ⚡ by SparkBot | Transparent AI Automation Agency</p>
+    </div>
+   </div>
+  </footer>
+  <script>
+    // ROI Calculator
+    const hoursSlider = document.getElementById('hours');
+    const rateSlider = document.getElementById('rate');
+    const hoursValue = document.getElementById('hours-value');
+    const rateValue = document.getElementById('rate-value');
+    const annualSavings = document.getElementById('annual-savings');
+
+    function updateCalculator() {
+      const hours = parseInt(hoursSlider.value);
+      const rate = parseInt(rateSlider.value);
+      const weekly = hours * rate;
+      const annual = weekly * 52;
+      
+      hoursValue.textContent = `${hours} hours`;
+      rateValue.textContent = `$${rate}/hour`;
+      annualSavings.textContent = `$${annual.toLocaleString()}`;
+    }
+
+    hoursSlider.addEventListener('input', updateCalculator);
+    rateSlider.addEventListener('input', updateCalculator);
+
+    // Element SDK Configuration
+    const defaultConfig = {
+      hero_title: "Save 20+ Hours Weekly with AI Automation",
+      hero_subtitle: "We help startups and agencies automate their lead generation using N8N and AI — transparent, fast, and scalable solutions from $500 to $500k.",
+      cta_primary: "Book Your Discovery Call →",
+      workflow_title: "See Automation in Action",
+      why_us_title: "Why Choose SparkBot?",
+      pricing_title: "Flexible Solutions for Every Business",
+      footer_text: "Built with ⚡ by SparkBot | Transparent AI Automation Agency",
+      background_color: "#0f0f0f",
+      accent_color: "#6366f1",
+      text_color: "#ffffff",
+      secondary_text_color: "#a0a0a0",
+      card_background: "#1a1a2e",
+      font_family: "system-ui",
+      font_size: 16
+    };
+
+    async function onConfigChange(config) {
+      const heroTitle = document.getElementById('hero-title');
+      const heroSubtitle = document.getElementById('hero-subtitle');
+      const ctaPrimary = document.getElementById('cta-primary');
+      const workflowTitle = document.getElementById('workflow-title');
+      const whyUsTitle = document.getElementById('why-us-title');
+      const pricingTitle = document.getElementById('pricing-title');
+      const footerText = document.getElementById('footer-text');
+
+      if (heroTitle) heroTitle.textContent = config.hero_title || defaultConfig.hero_title;
+      if (heroSubtitle) heroSubtitle.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+      if (ctaPrimary) ctaPrimary.textContent = config.cta_primary || defaultConfig.cta_primary;
+      if (workflowTitle) workflowTitle.textContent = config.workflow_title || defaultConfig.workflow_title;
+      if (whyUsTitle) whyUsTitle.textContent = config.why_us_title || defaultConfig.why_us_title;
+      if (pricingTitle) pricingTitle.textContent = config.pricing_title || defaultConfig.pricing_title;
+      if (footerText) footerText.textContent = config.footer_text || defaultConfig.footer_text;
+
+      const backgroundColor = config.background_color || defaultConfig.background_color;
+      const accentColor = config.accent_color || defaultConfig.accent_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const secondaryTextColor = config.secondary_text_color || defaultConfig.secondary_text_color;
+      const cardBackground = config.card_background || defaultConfig.card_background;
+
+      document.body.style.background = backgroundColor;
+      document.body.style.color = textColor;
+
+      const customFont = config.font_family || defaultConfig.font_family;
+      const baseFontStack = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif';
+      document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
+
+      const baseSize = config.font_size || defaultConfig.font_size;
+      const h1Elements = document.querySelectorAll('.hero h1');
+      h1Elements.forEach(el => el.style.fontSize = `${baseSize * 3}px`);
+      
+      const h2Elements = document.querySelectorAll('.section-title, .cta-section h2');
+      h2Elements.forEach(el => el.style.fontSize = `${baseSize * 2.625}px`);
+      
+      const pElements = document.querySelectorAll('.hero p, .cta-section p');
+      pElements.forEach(el => el.style.fontSize = `${baseSize * 1.25}px`);
+
+      const ctaButtons = document.querySelectorAll('.cta-button');
+      ctaButtons.forEach(btn => {
+        btn.style.background = `linear-gradient(135deg, ${accentColor} 0%, #8b5cf6 100%)`;
+        btn.style.fontSize = `${baseSize * 1.125}px`;
+      });
+
+      const featureCards = document.querySelectorAll('.feature-card, .roi-calculator, .github-card, .workflow-container');
+      featureCards.forEach(card => {
+        card.style.background = `linear-gradient(135deg, ${cardBackground} 0%, #16213e 100%)`;
+        card.style.borderColor = `${accentColor}33`;
+      });
+
+      const allSecondaryText = document.querySelectorAll('p:not(.hero p):not(.cta-section p), .section-subtitle, .roi-label, .price-label, .stat-label');
+      allSecondaryText.forEach(el => {
+        el.style.color = secondaryTextColor;
+      });
+
+      const accentElements = document.querySelectorAll('.roi-amount, .price-amount, .stat-number, .github-icon');
+      accentElements.forEach(el => {
+        el.style.color = accentColor;
+        if (el.classList.contains('github-icon')) {
+          el.style.fill = accentColor;
+        }
+      });
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              if (window.elementSdk) {
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            }
+          },
+          {
+            get: () => config.card_background || defaultConfig.card_background,
+            set: (value) => {
+              if (window.elementSdk) {
+                window.elementSdk.setConfig({ card_background: value });
+              }
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              if (window.elementSdk) {
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            }
+          },
+          {
+            get: () => config.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              if (window.elementSdk) {
+                window.elementSdk.setConfig({ accent_color: value });
+              }
+            }
+          },
+          {
+            get: () => config.secondary_text_color || defaultConfig.secondary_text_color,
+            set: (value) => {
+              if (window.elementSdk) {
+                window.elementSdk.setConfig({ secondary_text_color: value });
+              }
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (value) => {
+            if (window.elementSdk) {
+              window.elementSdk.setConfig({ font_family: value });
+            }
+          }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size,
+          set: (value) => {
+            if (window.elementSdk) {
+              window.elementSdk.setConfig({ font_size: value });
+            }
+          }
+        }
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["hero_title", config.hero_title || defaultConfig.hero_title],
+        ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle],
+        ["cta_primary", config.cta_primary || defaultConfig.cta_primary],
+        ["workflow_title", config.workflow_title || defaultConfig.workflow_title],
+        ["why_us_title", config.why_us_title || defaultConfig.why_us_title],
+        ["pricing_title", config.pricing_title || defaultConfig.pricing_title],
+        ["footer_text", config.footer_text || defaultConfig.footer_text]
+      ]);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+
+    // Initialize calculator
+    updateCalculator();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'998ce46207f084b9',t:'MTc2MjE4MzYwOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>

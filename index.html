@@ -326,53 +326,155 @@
 
     /* Workflow Visual Styles */
     .workflow-visual {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      position: relative;
+      margin-bottom: 40px;
     }
 
     .workflow-step {
-      flex: 1;
-      min-width: 180px;
       text-align: center;
-      padding: 24px 16px;
-      background: rgba(99, 102, 241, 0.05);
-      border-radius: 12px;
-      border: 1px solid rgba(99, 102, 241, 0.2);
-      transition: all 0.3s ease;
+      padding: 32px 20px;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.05) 100%);
+      border-radius: 16px;
+      border: 2px solid rgba(99, 102, 241, 0.2);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .workflow-step::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .workflow-step.active::before {
+      left: 100%;
     }
 
     .workflow-step:hover {
-      transform: translateY(-4px);
-      border-color: rgba(99, 102, 241, 0.4);
-      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+      transform: translateY(-8px);
+      border-color: rgba(99, 102, 241, 0.6);
+      box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
     }
 
     .step-icon {
-      margin-bottom: 16px;
+      margin-bottom: 20px;
       color: #6366f1;
+      transition: all 0.3s ease;
+    }
+
+    .workflow-step.active .step-icon {
+      color: #8b5cf6;
+      transform: scale(1.1);
     }
 
     .workflow-step h4 {
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
       color: #ffffff;
     }
 
     .workflow-step p {
-      font-size: 14px;
+      font-size: 15px;
       color: #a0a0a0;
-      line-height: 1.4;
+      line-height: 1.5;
     }
 
-    .workflow-arrow {
+    .workflow-step .step-details {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(99, 102, 241, 0.2);
+    }
+
+    .workflow-step .step-metric {
       font-size: 24px;
+      font-weight: 800;
       color: #6366f1;
-      font-weight: bold;
-      flex-shrink: 0;
+      margin-bottom: 4px;
+    }
+
+    .workflow-step .step-metric-label {
+      font-size: 12px;
+      color: #a0a0a0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Animated Connection Lines */
+    .workflow-connections {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 2px;
+      z-index: -1;
+    }
+
+    .connection-line {
+      position: absolute;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(99, 102, 241, 0.3), rgba(139, 92, 246, 0.3));
+      top: 0;
+    }
+
+    .connection-line:nth-child(1) { left: 20%; width: 15%; }
+    .connection-line:nth-child(2) { left: 45%; width: 15%; }
+    .connection-line:nth-child(3) { left: 70%; width: 15%; }
+
+    .data-flow {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: #6366f1;
+      border-radius: 50%;
+      top: -3px;
+      animation: dataFlow 3s linear infinite;
+      box-shadow: 0 0 10px rgba(99, 102, 241, 0.6);
+    }
+
+    @keyframes dataFlow {
+      0% { left: 20%; opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { left: 85%; opacity: 0; }
+    }
+
+    .workflow-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(99, 102, 241, 0.2);
+    }
+
+    .workflow-stat {
+      text-align: center;
+      padding: 20px;
+      background: rgba(99, 102, 241, 0.05);
+      border-radius: 12px;
+      border: 1px solid rgba(99, 102, 241, 0.1);
+    }
+
+    .workflow-stat-number {
+      font-size: 28px;
+      font-weight: 800;
+      color: #6366f1;
+      margin-bottom: 8px;
+    }
+
+    .workflow-stat-label {
+      font-size: 14px;
+      color: #a0a0a0;
     }
 
     /* Why Us Section */
@@ -644,11 +746,17 @@
       }
 
       .workflow-visual {
-        flex-direction: column;
+        grid-template-columns: 1fr;
+        gap: 20px;
       }
 
-      .workflow-arrow {
-        transform: rotate(90deg);
+      .workflow-connections {
+        display: none;
+      }
+
+      .workflow-stats {
+        grid-template-columns: 1fr;
+        gap: 16px;
       }
     }
   </style>
@@ -711,46 +819,101 @@
     <p class="section-subtitle">Real N8N workflow powering lead generation for agencies like yours</p>
     <div class="workflow-container">
      <div class="workflow-visual">
-      <div class="workflow-step">
+      <div class="workflow-connections">
+       <div class="connection-line"></div>
+       <div class="connection-line"></div>
+       <div class="connection-line"></div>
+       <div class="data-flow"></div>
+      </div>
+      <div class="workflow-step" data-step="1">
        <div class="step-icon">
-        <svg width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /> <polyline points="3.27,6.96 12,12.01 20.73,6.96" /> <line x1="12" y1="22.08" x2="12" y2="12" />
+        <svg width="40" height="40" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /> <polyline points="3.27,6.96 12,12.01 20.73,6.96" /> <line x1="12" y1="22.08" x2="12" y2="12" />
         </svg>
        </div>
        <h4>Lead Capture</h4>
-       <p>Website forms, LinkedIn, cold outreach</p>
+       <p>Multi-channel lead collection from websites, LinkedIn, and cold outreach campaigns</p>
+       <div class="step-details">
+        <div class="step-metric" id="capture-metric">
+         247
+        </div>
+        <div class="step-metric-label">
+         Leads/Month
+        </div>
+       </div>
       </div>
-      <div class="workflow-arrow">
-       →
-      </div>
-      <div class="workflow-step">
+      <div class="workflow-step" data-step="2">
        <div class="step-icon">
-        <svg width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4" /> <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3" /> <path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3" /> <path d="M13 12h3a2 2 0 0 1 2 2v1" /> <path d="M11 12H8a2 2 0 0 0-2 2v1" />
+        <svg width="40" height="40" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4" /> <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3" /> <path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3" /> <path d="M13 12h3a2 2 0 0 1 2 2v1" /> <path d="M11 12H8a2 2 0 0 0-2 2v1" />
         </svg>
        </div>
        <h4>AI Scoring</h4>
-       <p>Intelligent lead qualification &amp; prioritization</p>
+       <p>Machine learning algorithms analyze and score leads based on conversion probability</p>
+       <div class="step-details">
+        <div class="step-metric" id="scoring-metric">
+         89%
+        </div>
+        <div class="step-metric-label">
+         Accuracy Rate
+        </div>
+       </div>
       </div>
-      <div class="workflow-arrow">
-       →
-      </div>
-      <div class="workflow-step">
+      <div class="workflow-step" data-step="3">
        <div class="step-icon">
-        <svg width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /> <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
+        <svg width="40" height="40" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /> <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
         </svg>
        </div>
        <h4>CRM Integration</h4>
-       <p>Automatic contact creation &amp; updates</p>
+       <p>Seamless data sync with HubSpot, Salesforce, and 50+ other CRM platforms</p>
+       <div class="step-details">
+        <div class="step-metric" id="crm-metric">
+         2.3s
+        </div>
+        <div class="step-metric-label">
+         Sync Time
+        </div>
+       </div>
       </div>
-      <div class="workflow-arrow">
-       →
-      </div>
-      <div class="workflow-step">
+      <div class="workflow-step" data-step="4">
        <div class="step-icon">
-        <svg width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /> <polyline points="22,6 12,13 2,6" />
+        <svg width="40" height="40" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /> <polyline points="22,6 12,13 2,6" />
         </svg>
        </div>
        <h4>Email Sequences</h4>
-       <p>Personalized nurture campaigns</p>
+       <p>Personalized drip campaigns with dynamic content based on lead behavior</p>
+       <div class="step-details">
+        <div class="step-metric" id="email-metric">
+         34%
+        </div>
+        <div class="step-metric-label">
+         Open Rate
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="workflow-stats">
+      <div class="workflow-stat">
+       <div class="workflow-stat-number">
+        15min
+       </div>
+       <div class="workflow-stat-label">
+        Average Setup Time
+       </div>
+      </div>
+      <div class="workflow-stat">
+       <div class="workflow-stat-number">
+        24/7
+       </div>
+       <div class="workflow-stat-label">
+        Automated Processing
+       </div>
+      </div>
+      <div class="workflow-stat">
+       <div class="workflow-stat-number">
+        99.9%
+       </div>
+       <div class="workflow-stat-label">
+        Uptime Guarantee
+       </div>
       </div>
      </div>
     </div>
@@ -871,12 +1034,28 @@
    </div>
   </footer>
   <script>
-    // ROI Calculator
+    // ROI Calculator with Auto-Animation
     const hoursSlider = document.getElementById('hours');
     const rateSlider = document.getElementById('rate');
     const hoursValue = document.getElementById('hours-value');
     const rateValue = document.getElementById('rate-value');
     const annualSavings = document.getElementById('annual-savings');
+
+    let isUserInteracting = false;
+    let autoAnimationInterval;
+    let userInteractionTimeout;
+
+    // Predefined scenarios for auto-animation
+    const scenarios = [
+      { hours: 15, rate: 50, label: "Small Agency" },
+      { hours: 25, rate: 85, label: "Growing Business" },
+      { hours: 35, rate: 120, label: "Enterprise Team" },
+      { hours: 20, rate: 75, label: "Startup" },
+      { hours: 30, rate: 95, label: "Marketing Agency" },
+      { hours: 18, rate: 65, label: "Consultant" }
+    ];
+
+    let currentScenarioIndex = 0;
 
     function updateCalculator() {
       const hours = parseInt(hoursSlider.value);
@@ -889,8 +1068,142 @@
       annualSavings.textContent = `$${annual.toLocaleString()}`;
     }
 
-    hoursSlider.addEventListener('input', updateCalculator);
-    rateSlider.addEventListener('input', updateCalculator);
+    function animateToScenario(scenario, duration = 2000) {
+      const startHours = parseInt(hoursSlider.value);
+      const startRate = parseInt(rateSlider.value);
+      const targetHours = scenario.hours;
+      const targetRate = scenario.rate;
+      
+      const startTime = Date.now();
+      
+      function animate() {
+        const elapsed = Date.now() - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Easing function for smooth animation
+        const easeInOut = progress < 0.5 
+          ? 2 * progress * progress 
+          : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+        
+        const currentHours = Math.round(startHours + (targetHours - startHours) * easeInOut);
+        const currentRate = Math.round(startRate + (targetRate - startRate) * easeInOut);
+        
+        hoursSlider.value = currentHours;
+        rateSlider.value = currentRate;
+        updateCalculator();
+        
+        if (progress < 1 && !isUserInteracting) {
+          requestAnimationFrame(animate);
+        }
+      }
+      
+      animate();
+    }
+
+    function startAutoAnimation() {
+      if (isUserInteracting) return;
+      
+      autoAnimationInterval = setInterval(() => {
+        if (!isUserInteracting) {
+          const scenario = scenarios[currentScenarioIndex];
+          animateToScenario(scenario);
+          currentScenarioIndex = (currentScenarioIndex + 1) % scenarios.length;
+        }
+      }, 4000); // Change scenario every 4 seconds
+    }
+
+    function stopAutoAnimation() {
+      if (autoAnimationInterval) {
+        clearInterval(autoAnimationInterval);
+        autoAnimationInterval = null;
+      }
+    }
+
+    function handleUserInteraction() {
+      isUserInteracting = true;
+      stopAutoAnimation();
+      
+      // Clear existing timeout
+      if (userInteractionTimeout) {
+        clearTimeout(userInteractionTimeout);
+      }
+      
+      // Resume auto-animation after 5 seconds of no interaction
+      userInteractionTimeout = setTimeout(() => {
+        isUserInteracting = false;
+        startAutoAnimation();
+      }, 5000);
+    }
+
+    // Event listeners for user interaction
+    hoursSlider.addEventListener('input', () => {
+      updateCalculator();
+      handleUserInteraction();
+    });
+
+    rateSlider.addEventListener('input', () => {
+      updateCalculator();
+      handleUserInteraction();
+    });
+
+    // Start auto-animation on page load
+    setTimeout(() => {
+      if (!isUserInteracting) {
+        startAutoAnimation();
+      }
+    }, 2000); // Wait 2 seconds before starting auto-animation
+
+    // Workflow Animation
+    function animateWorkflow() {
+      const steps = document.querySelectorAll('.workflow-step');
+      let currentStep = 0;
+      
+      function activateStep() {
+        // Remove active class from all steps
+        steps.forEach(step => step.classList.remove('active'));
+        
+        // Add active class to current step
+        if (steps[currentStep]) {
+          steps[currentStep].classList.add('active');
+        }
+        
+        // Move to next step
+        currentStep = (currentStep + 1) % steps.length;
+      }
+      
+      // Initial activation
+      activateStep();
+      
+      // Continue animation every 2 seconds
+      setInterval(activateStep, 2000);
+    }
+
+    // Animate workflow metrics
+    function animateWorkflowMetrics() {
+      const metrics = {
+        'capture-metric': [180, 247, 312, 289, 234, 267],
+        'scoring-metric': ['87%', '89%', '92%', '88%', '91%', '89%'],
+        'crm-metric': ['1.8s', '2.3s', '1.5s', '2.1s', '1.9s', '2.0s'],
+        'email-metric': ['31%', '34%', '38%', '32%', '36%', '35%']
+      };
+      
+      Object.keys(metrics).forEach(metricId => {
+        const element = document.getElementById(metricId);
+        if (element) {
+          let index = 0;
+          setInterval(() => {
+            element.textContent = metrics[metricId][index];
+            index = (index + 1) % metrics[metricId].length;
+          }, 3000 + Math.random() * 2000); // Randomize timing slightly
+        }
+      });
+    }
+
+    // Start workflow animations
+    setTimeout(() => {
+      animateWorkflow();
+      animateWorkflowMetrics();
+    }, 1000);
 
     // Element SDK Configuration
     const defaultConfig = {
@@ -1064,5 +1377,5 @@
     // Initialize calculator
     updateCalculator();
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'998ce46207f084b9',t:'MTc2MjE4MzYwOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'998fed5af75f9aa2',t:'MTc2MjIxNTQzMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>

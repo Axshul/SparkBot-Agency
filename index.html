@@ -721,118 +721,7 @@
       color: #6366f1;
     }
 
-    /* Demo Systems Section */
-    .demo-systems-section {
-      padding: 100px 24px;
-      background: #0a0a0a;
-    }
 
-    .demo-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 32px;
-      max-width: 1200px;
-      margin: 0 auto 60px;
-    }
-
-    .demo-card {
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-      padding: 32px;
-      border-radius: 16px;
-      border: 1px solid rgba(99, 102, 241, 0.2);
-      transition: all 0.3s ease;
-    }
-
-    .demo-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(99, 102, 241, 0.5);
-      box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
-    }
-
-    .demo-header {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 16px;
-    }
-
-    .demo-icon {
-      color: #6366f1;
-    }
-
-    .demo-header h3 {
-      font-size: 22px;
-      font-weight: 700;
-      color: #ffffff;
-    }
-
-    .demo-description {
-      font-size: 15px;
-      color: #a0a0a0;
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-
-    .demo-tech {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 20px;
-    }
-
-    .tech-tag {
-      padding: 4px 12px;
-      background: rgba(99, 102, 241, 0.1);
-      border: 1px solid rgba(99, 102, 241, 0.3);
-      border-radius: 12px;
-      font-size: 12px;
-      font-weight: 600;
-      color: #818cf8;
-    }
-
-    .demo-link {
-      display: inline-flex;
-      align-items: center;
-      color: #6366f1;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 14px;
-      transition: all 0.3s ease;
-    }
-
-    .demo-link:hover {
-      color: #8b5cf6;
-      transform: translateX(4px);
-    }
-
-    .github-cta {
-      max-width: 700px;
-      margin: 0 auto;
-      text-align: center;
-      padding: 48px 32px;
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-      border-radius: 16px;
-      border: 1px solid rgba(99, 102, 241, 0.2);
-    }
-
-    .github-icon-large {
-      fill: #6366f1;
-      margin-bottom: 24px;
-    }
-
-    .github-cta h3 {
-      font-size: 28px;
-      font-weight: 800;
-      color: #ffffff;
-      margin-bottom: 16px;
-    }
-
-    .github-cta p {
-      font-size: 16px;
-      color: #a0a0a0;
-      margin-bottom: 28px;
-      line-height: 1.6;
-    }
 
     /* CTA Section */
     .cta-section {
@@ -861,66 +750,33 @@
       margin-top: 60px;
       padding-top: 60px;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
-      max-width: 500px;
+      max-width: 700px;
       margin-left: auto;
       margin-right: auto;
     }
 
     .email-capture-text {
-      font-size: 16px;
+      font-size: 18px;
       color: #a0a0a0;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
+      text-align: center;
     }
 
-    .email-form {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 12px;
+    .n8n-form-container {
+      width: 100%;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      border-radius: 16px;
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      padding: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
 
-    .email-input {
-      flex: 1;
-      padding: 14px 20px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(99, 102, 241, 0.3);
-      border-radius: 8px;
-      color: #ffffff;
-      font-size: 15px;
-      outline: none;
-      transition: all 0.3s ease;
-    }
-
-    .email-input:focus {
-      border-color: rgba(99, 102, 241, 0.6);
-      background: rgba(255, 255, 255, 0.08);
-    }
-
-    .email-input::placeholder {
-      color: #808080;
-    }
-
-    .email-submit {
-      padding: 14px 28px;
-      background: rgba(99, 102, 241, 0.1);
-      border: 1px solid rgba(99, 102, 241, 0.3);
-      border-radius: 8px;
-      color: #6366f1;
-      font-weight: 600;
-      font-size: 15px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .email-submit:hover {
-      background: rgba(99, 102, 241, 0.2);
-      border-color: rgba(99, 102, 241, 0.5);
-      transform: translateY(-2px);
-    }
-
-    .email-note {
-      font-size: 14px;
-      color: #6366f1;
-      min-height: 20px;
+    .n8n-form-iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+      border-radius: 12px;
+      background: transparent;
     }
 
     /* Footer */
@@ -991,9 +847,41 @@
     }
 
     /* Responsive */
+    @media (max-width: 1024px) {
+      .container {
+        padding: 0 20px;
+      }
+
+      .hero-content {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .workflow-visual {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+
+      .call-benefits {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media (max-width: 768px) {
+      .nav {
+        padding: 12px 20px;
+      }
+
       .nav-links {
         display: none;
+      }
+
+      .hero {
+        padding: 100px 20px 60px;
       }
 
       .hero-content {
@@ -1003,33 +891,63 @@
       }
 
       .hero h1 {
-        font-size: 36px;
+        font-size: 32px;
+        line-height: 1.2;
       }
 
       .hero p {
+        font-size: 16px;
+      }
+
+      .cta-button {
+        padding: 14px 28px;
+        font-size: 16px;
+        width: 100%;
+        text-align: center;
+      }
+
+      .roi-calculator {
+        padding: 24px;
+      }
+
+      .calculator-title {
         font-size: 18px;
       }
 
       .section-title {
-        font-size: 32px;
+        font-size: 28px;
+        line-height: 1.3;
       }
 
-      .cta-section h2 {
-        font-size: 32px;
+      .section-subtitle {
+        font-size: 16px;
+        padding: 0 12px;
       }
 
-      .pricing-range {
-        flex-direction: column;
-        gap: 20px;
+      .what-happens-next {
+        padding: 60px 20px;
       }
 
-      .github-stats {
-        gap: 20px;
+      .what-happens-content h3 {
+        font-size: 28px;
+        margin-bottom: 32px;
       }
 
-      .footer-links {
-        flex-direction: column;
-        gap: 16px;
+      .call-benefits {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .call-benefit {
+        padding: 24px 20px;
+      }
+
+      .workflow-section {
+        padding: 60px 20px;
+      }
+
+      .workflow-container {
+        padding: 24px 20px;
       }
 
       .workflow-visual {
@@ -1044,6 +962,132 @@
       .workflow-stats {
         grid-template-columns: 1fr;
         gap: 16px;
+      }
+
+      .workflow-step {
+        padding: 24px 16px;
+      }
+
+      .why-us {
+        padding: 60px 20px;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .feature-card {
+        padding: 32px 24px;
+      }
+
+      .pricing {
+        padding: 60px 20px;
+      }
+
+      .pricing-tiers {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .pricing-tier {
+        padding: 32px 24px;
+      }
+
+      .pricing-tier.featured {
+        transform: scale(1);
+      }
+
+      .pricing-tier.featured:hover {
+        transform: translateY(-8px);
+      }
+
+      .cta-section {
+        padding: 60px 20px;
+      }
+
+      .cta-section h2 {
+        font-size: 28px;
+        line-height: 1.3;
+      }
+
+      .cta-section p {
+        font-size: 16px;
+      }
+
+      .email-capture {
+        margin-top: 48px;
+        padding-top: 48px;
+        max-width: 100%;
+      }
+
+      .email-capture-text {
+        font-size: 16px;
+      }
+
+      .n8n-form-iframe {
+        height: 450px;
+      }
+
+      .footer {
+        padding: 48px 20px 32px;
+      }
+
+      .footer-contact {
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 26px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .section-title {
+        font-size: 24px;
+      }
+
+      .cta-section h2 {
+        font-size: 24px;
+      }
+
+      .roi-calculator {
+        padding: 20px;
+      }
+
+      .roi-amount {
+        font-size: 28px;
+      }
+
+      .workflow-step h4 {
+        font-size: 18px;
+      }
+
+      .feature-card h3 {
+        font-size: 20px;
+      }
+
+      .tier-price {
+        font-size: 30px;
+      }
+
+      .tier-name {
+        font-size: 20px;
+      }
+
+      .n8n-form-iframe {
+        height: 400px;
       }
     }
   </style>
@@ -1350,56 +1394,6 @@
      </div>
     </div>
    </div>
-  </section><!-- Demo Systems Section -->
-  <section class="demo-systems-section">
-   <div class="container">
-    <h2 class="section-title">Demo Systems &amp; Open Source</h2>
-    <p class="section-subtitle">See real automation workflows we've built — all transparent, all documented</p>
-    <div class="demo-grid">
-     <div class="demo-card">
-      <div class="demo-header">
-       <div class="demo-icon">
-        <svg width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /> <circle cx="8.5" cy="7" r="4" /> <polyline points="17 11 19 13 23 9" />
-        </svg>
-       </div>
-       <h3>LeadGen Bot v1</h3>
-      </div>
-      <p class="demo-description">Automated LinkedIn scraping → Gmail outreach → Google Sheets tracking. Built for demo purposes.</p>
-      <div class="demo-tech"><span class="tech-tag">N8N</span> <span class="tech-tag">LinkedIn API</span> <span class="tech-tag">Gmail</span>
-      </div><a href="https://github.com/Axshul/SparkBot-Agency" class="demo-link" target="_blank" rel="noopener noreferrer"> View on GitHub → </a>
-     </div>
-     <div class="demo-card">
-      <div class="demo-header">
-       <div class="demo-icon">
-        <svg width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /> <path d="M8 10h.01" /> <path d="M12 10h.01" /> <path d="M16 10h.01" />
-        </svg>
-       </div>
-       <h3>AI Outreach Flow</h3>
-      </div>
-      <p class="demo-description">LinkedIn AI personalization → Automated follow-ups → Response tracking. Demo system with real AI.</p>
-      <div class="demo-tech"><span class="tech-tag">OpenAI</span> <span class="tech-tag">N8N</span> <span class="tech-tag">Webhooks</span>
-      </div><a href="https://github.com/Axshul/SparkBot-Agency" class="demo-link" target="_blank" rel="noopener noreferrer"> View on GitHub → </a>
-     </div>
-     <div class="demo-card">
-      <div class="demo-header">
-       <div class="demo-icon">
-        <svg width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" /> <line x1="3" y1="9" x2="21" y2="9" /> <line x1="9" y1="21" x2="9" y2="9" />
-        </svg>
-       </div>
-       <h3>CRM Auto-Sync</h3>
-      </div>
-      <p class="demo-description">Real-time lead capture → AI scoring → HubSpot/Salesforce sync. Production-ready template.</p>
-      <div class="demo-tech"><span class="tech-tag">HubSpot</span> <span class="tech-tag">Salesforce</span> <span class="tech-tag">AI Scoring</span>
-      </div><a href="https://github.com/Axshul/SparkBot-Agency" class="demo-link" target="_blank" rel="noopener noreferrer"> View on GitHub → </a>
-     </div>
-    </div>
-    <div class="github-cta">
-     <svg class="github-icon-large" viewbox="0 0 24 24" width="48" height="48"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-     </svg>
-     <h3>All Our Work is Open Source</h3>
-     <p>Every workflow, every integration, every line of code — transparent and documented on GitHub.</p><a href="https://github.com/Axshul/SparkBot-Agency" class="cta-button" target="_blank" rel="noopener noreferrer">Explore Our Repository →</a>
-    </div>
-   </div>
   </section><!-- Final CTA Section -->
   <section class="cta-section">
    <div class="container">
@@ -1407,9 +1401,8 @@
     <p>Book a free 15-minute discovery call and see how much time and money you could be saving with custom AI automation.</p><a href="https://calendly.com/anshul2006n/book-a-discovery-call" class="cta-button" target="_blank" rel="noopener noreferrer">Schedule Your Discovery Call →</a>
     <div class="email-capture">
      <p class="email-capture-text">Not ready to book? Get workflow updates and automation tips:</p>
-     <form class="email-form" id="email-form"><input type="email" name="email" placeholder="Enter your email" required class="email-input"> <button type="submit" class="email-submit">Get Updates</button>
-     </form>
-     <p class="email-note" id="form-message"></p>
+     <div class="n8n-form-container"><iframe src="https://71245c5b4176.ngrok-free.app/form/6d60f4f5-4bb8-451a-a6e0-4c7ccafaf76e" class="n8n-form-iframe" title="Contact Form" frameborder="0"></iframe>
+     </div>
     </div>
    </div>
   </section><!-- Footer -->
@@ -1774,34 +1767,7 @@
     // Initialize calculator
     updateCalculator();
 
-    // Email form handler
-    const emailForm = document.getElementById('email-form');
-    const formMessage = document.getElementById('form-message');
 
-    if (emailForm) {
-      emailForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const emailInput = emailForm.querySelector('input[name="email"]');
-        const email = emailInput.value;
-        
-        // Show success message
-        formMessage.textContent = '✓ Thanks! We\'ll send you automation tips and workflow updates.';
-        formMessage.style.color = '#6366f1';
-        
-        // Clear the form
-        emailInput.value = '';
-        
-        // In a real implementation, this would connect to your N8N webhook or email service
-        // For now, it just shows the success message
-        console.log('Email captured:', email);
-        
-        // Hide message after 5 seconds
-        setTimeout(() => {
-          formMessage.textContent = '';
-        }, 5000);
-      });
-    }
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99c63e9b46a59a90',t:'MTc2Mjc4NDk5My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99c65e5bf5a99a90',t:'MTc2Mjc4NjI5My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
